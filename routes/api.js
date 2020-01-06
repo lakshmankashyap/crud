@@ -1,15 +1,16 @@
-var express = require('express');
-var router = express.Router();
-var validator = require('express-validator')
-var createStudent = require('../controllers/srijan/createStudent')
-var updateStudent = require('../controllers/srijan/updateStudent')
-var getStudentDetail = require('../controllers/srijan/getStudentDetail')
-var deleteStudent = require('../controllers/srijan/deleteStudent')
-var getAllStudentsDetails = require('../controllers/srijan/getAllStudentsDetails')
-var search = require('../controllers/srijan/search')
+const express = require('express')
+
+const router = express.Router()
+const validator = require('express-validator')
+const createStudent = require('../controllers/srijan/createStudent')
+const updateStudent = require('../controllers/srijan/updateStudent')
+const getStudentDetail = require('../controllers/srijan/getStudentDetail')
+const deleteStudent = require('../controllers/srijan/deleteStudent')
+const getAllStudentsDetails = require('../controllers/srijan/getAllStudentsDetails')
+const search = require('../controllers/srijan/search')
 
 
-router.use(validator());
+router.use(validator())
 // const JWTSECRET = 'THIS_IS_A_TEST_JWT_SECRET_KEY';
 
 // const verifyTokenAPI = function(req,res){
@@ -35,30 +36,29 @@ router.use(validator());
 //             return res.redirect('/');
 //           });
 //       });
-    
+
 //   }else {
 //     return res.redirect('/');
 //   }
 // };
 //  /* STUDENT ROUTES */
 
- // POST method to create student
-router.post('/createStudent', createStudent.createStudent);
+// POST method to create student
+router.post('/createStudent', createStudent.createStudent)
 
 // PUT method to update student details
-router.put('/updateStudent/:email', updateStudent.updateStudent);
+router.put('/updateStudent/:email', updateStudent.updateStudent)
 
 // GET method to get the details of student provided by id
-router.get('/getStudentDetail/:email', getStudentDetail.getStudentDetail);
+router.get('/getStudentDetail/:email', getStudentDetail.getStudentDetail)
 
 // DELETE method to delete a student from the database
-router.delete('/deleteStudent/:email', deleteStudent.deleteStudent);
+router.delete('/deleteStudent/:email', deleteStudent.deleteStudent)
 
 // GET method to fetch all student details
-router.get('/getAllStudentsDetails', getAllStudentsDetails.getAllStudentsDetails);
+router.get('/getAllStudentsDetails', getAllStudentsDetails.getAllStudentsDetails)
 
 // POST method for searching student
-router.post('/search', search.search);
+router.post('/search', search.search)
 
-module.exports = router;
-
+module.exports = router

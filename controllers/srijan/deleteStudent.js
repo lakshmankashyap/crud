@@ -1,37 +1,37 @@
-const Student = require('../../model/student');
 const mongoose = require('mongoose')
-var _ = require('lodash');
+const _ = require('lodash')
+const Student = require('../../model/student')
 
 module.exports = {
 
-    // create student API
+	// create student API
 
-    deleteStudent: (req, res) => {
-        try {
-            let email = req.params.email;
+	deleteStudent: (req, res) => {
+		try {
+			const { email } = req.params
 
-            // find student into database
-            Student.findOneAndDelete({ "email": email }).then((data) => {
-                console.log(data)
-                if (!data) {
-                    console.log('no user found')
-                    res.json({
-                        "status": false,
-                        "message": "student doest not exist"
-                    })
-                } else {
-                    res.json({
-                        "status": true,
-                        "message": "student deleted successfully"
-                    })
-                }
-            })
-        } catch (e) {
-            console.log(e)
-            res.json({
-                "status": "error",
-                "msg": "error encountered"
-            });
-        }
-    }
+			// find student into database
+			Student.findOneAndDelete({ email }).then((data) => {
+				console.log(data)
+				if (!data) {
+					console.log('no user found')
+					res.json({
+						status: false,
+						message: 'student doest not exist',
+					})
+				} else {
+					res.json({
+						status: true,
+						message: 'student deleted successfully',
+					})
+				}
+			})
+		} catch (e) {
+			console.log(e)
+			res.json({
+				status: 'error',
+				msg: 'error encountered',
+			})
+		}
+	},
 }

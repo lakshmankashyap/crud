@@ -1,37 +1,35 @@
-const Student = require('../../model/student');
 const mongoose = require('mongoose')
-var _ = require('lodash');
+const _ = require('lodash')
+const Student = require('../../model/student')
 
 module.exports = {
-    // create student API
+	// create student API
 
-    getStudentDetail: (req, res) => {
-        try {
-            let email = req.params.email;
+	getStudentDetail: (req, res) => {
+		try {
+			const { email } = req.params
 
-            // find student into database
-            Student.findOne({ "email": email }).then((data) => {
-                if (!data) {
-                    res.json({
-                        "status": false,
-                        "message": "student doest not exist"
-                    })
-                } else {
-
-                    res.json({
-                        "status": true,
-                        "message": "student details",
-                        "Student_Details": data
-                    })
-
-                }
-            })
-        } catch (e) {
-            console.log(e)
-            res.json({
-                "status": "error",
-                "msg": "error encountered"
-            });
-        }
-    }
+			// find student into database
+			Student.findOne({ email }).then((data) => {
+				if (!data) {
+					res.json({
+						status: false,
+						message: 'student doest not exist',
+					})
+				} else {
+					res.json({
+						status: true,
+						message: 'student details',
+						Student_Details: data,
+					})
+				}
+			})
+		} catch (e) {
+			console.log(e)
+			res.json({
+				status: 'error',
+				msg: 'error encountered',
+			})
+		}
+	},
 }
