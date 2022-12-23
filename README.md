@@ -12,4 +12,3 @@ Step 2 : Open terminal in the project folder
 Step 3 : Run command in terminal - npm install or npm i
 Step 4 : Run command in terminal - nodemon
 The project will run now.
-
